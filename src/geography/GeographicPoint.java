@@ -41,7 +41,7 @@ public class GeographicPoint extends Double {
     
     public String toString()
     {
-    		return "Lat: " + getX() + ", Lon: " + getY();
+    		return "(" + getX() + ", " + getY() + ")";
     }
 	
 }
