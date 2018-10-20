@@ -24,6 +24,7 @@ import basicgraph.Graph;
 import geography.GeographicPoint;
 import geography.RoadSegment;
 import roadgraph.MapGraph;
+import roadgraph.SimpleMapGraph;
 
 
 public class GraphLoader 

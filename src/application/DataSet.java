@@ -16,7 +16,7 @@ import util.GraphLoader;
  */
 public class DataSet {
 	String filePath;
-	roadgraph.MapGraph graph;
+	roadgraph.SimpleMapGraph graph;
 	Set<GeographicPoint> intersections;
     private HashMap<geography.GeographicPoint,HashSet<geography.RoadSegment>>  roads;
 	boolean currentlyDisplayed;
@@ -28,12 +28,12 @@ public class DataSet {
         currentlyDisplayed = false;
 	}
 
-    public void setGraph(roadgraph.MapGraph graph) {
+    public void setGraph(roadgraph.SimpleMapGraph graph) {
     	this.graph = graph;
     }
 
     public void setRoads(HashMap<geography.GeographicPoint,HashSet<geography.RoadSegment>>  roads) { this.roads = roads; }
-    public roadgraph.MapGraph getGraph(){ return graph; }
+    public roadgraph.SimpleMapGraph getGraph(){ return graph; }
     
     /** Return the intersections in this graph.
      * In order to keep it consistent, if getVertices in the graph returns something 
@@ -55,7 +55,7 @@ public class DataSet {
     public HashMap<geography.GeographicPoint,HashSet<geography.RoadSegment>>  getRoads() { return this.roads; }
 
     public void initializeGraph() {
-        graph = new roadgraph.MapGraph();
+        graph = new roadgraph.SimpleMapGraph();
         roads = new HashMap<geography.GeographicPoint, HashSet<geography.RoadSegment>>();
         intersections = new HashSet<GeographicPoint>();
         //TODO: change to use intersections for points in graph.

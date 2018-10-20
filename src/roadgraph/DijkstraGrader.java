@@ -1,17 +1,9 @@
 package roadgraph;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
-import java.util.function.Consumer;
+
+import geography.GeographicPoint;
 import util.GraphLoader;
-import geography.*;
 
 /**
  * @author UCSD MOOC Development Team
@@ -63,7 +55,7 @@ public class DijkstraGrader implements Runnable {
      * @param end The point to end at
      */
     public void runTest(int i, String file, String desc, GeographicPoint start, GeographicPoint end) {
-        MapGraph graph = new MapGraph();
+        SimpleMapGraph graph = new SimpleMapGraph();
 
         feedback += "\n\n" + desc;
 
@@ -80,7 +72,7 @@ public class DijkstraGrader implements Runnable {
      * @param start The point to start from
      * @param end The point to end at
      */
-    public void judge(int i, MapGraph result, CorrectAnswer corr, GeographicPoint start, GeographicPoint end) {
+    public void judge(int i, SimpleMapGraph result, CorrectAnswer corr, GeographicPoint start, GeographicPoint end) {
         // Correct if paths are same length and have the same elements
         feedback += appendFeedback(i, "Running Dijkstra's algorithm from (" + start.getX() + ", " + start.getY() + ") to (" + end.getX() + ", " + end.getY() + ")");
         List<GeographicPoint> path = result.dijkstra(start, end);
