@@ -1,0 +1,35 @@
+Class: MapGraph
+Modifications made to MapGraph (what and why):
+	1. Map<GeographicPoint, MapNode>	- The main data structure to represents the vertices of the graph
+	2. isLocationPresent 				- A helper method to check the presence of location in the graph
+	3. findPathUsingBFS 				- A helper method to perform actual search using BFS and return the findPath
+	4. constructPathFromParentMap		- A helper method to construct the path in the correct order
+
+Class name: MapNode.java
+Purpose and description of class:
+	This class represents a single location as a node in the geographical graph.
+	It maintains below details related to a node
+		- Location (coordinates)
+		- Streets
+		- Other Neighbouring locations
+
+Class name: MapEdge.java
+Purpose and description of class:
+	This class represents a single street as an edge int he geographical graph.
+	It maintains below details related to a node
+		- Source Location (coordinates)
+		- Destination Location (coordinates)
+		- Name of the road
+		- Type of the road
+		- Length of the road
+
+...
+
+Overall Design Justification (4-6 sentences):
+
+- The two distinct entities in the geographic graph - places & streets have been represented in separate classes
+- All the places in the geographic location are represented as a hash map which has made the conversion between a geographic location & corresponding node in the graph easy
+- Streets and neighbouring places have been added within the MapNode class and API have been provided for accessing them so that MapGraph class remains clean
+- Core search algorithm and path finding algorithm have been separated in different methods for reusability
+
+
