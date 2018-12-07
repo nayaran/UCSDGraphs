@@ -2,12 +2,12 @@ package util;
 
 import java.util.Calendar;
 
-public class CachedObject implements Cacheable {
+public class SimpleCacheable implements Cacheable {
 	private Object object = null;
 	private Object objectIdentifier = null;
 	private java.util.Date expiryDate = null;
 	
-	public CachedObject(Object object, Object identifier, int timeToLiveSeconds) {
+	public SimpleCacheable(Object object, Object identifier, int timeToLiveSeconds) {
 		this.object = object;
 		this.objectIdentifier = identifier;
 		
@@ -21,7 +21,10 @@ public class CachedObject implements Cacheable {
 		}
 		
 	}
-
+	@Override
+	public Object getEnclosingObject() {
+		return this.object;
+	}
 	@Override
 	public boolean isExpired() {
 		// Object lives forever if expiryDate is not set
