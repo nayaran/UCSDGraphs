@@ -4,6 +4,7 @@ package roadgraph;
 import java.util.LinkedList;
 import java.util.List;
 
+import geography.GeographicPoint;
 import util.CacheManager;
 import util.Cacheable;
 
@@ -11,12 +12,12 @@ public class MapRoute implements Cacheable{
 	private MapNode source;
 	private MapNode destination;
 	
-	private List<MapNode> route;
+	private List<MapNode> mapRoute;
 	
 	public MapRoute(MapNode source, MapNode destination) {
 		this.source = source;
 		this.destination = destination;
-		this.route = new LinkedList<MapNode>();
+		this.mapRoute = new LinkedList<MapNode>();
 	}
 	public MapNode getSource() {
 		return source;
@@ -25,22 +26,21 @@ public class MapRoute implements Cacheable{
 	public void setSource(MapNode source) {
 		this.source = source;
 	}
-
 	
 	public MapNode getDestination() {
-		return destination;
+		return this.destination;
 	}
 
 	public void setDestination(MapNode destination) {
 		this.destination = destination;
 	}
 
-	public List<MapNode> getRoute() {
-		return route;
+	public List<MapNode> getMapRoute() {
+		return mapRoute;
 	}
 
-	public void setRoute(List<MapNode> route) {
-		this.route = route;
+	public void setMapRoute(List<MapNode> route) {
+		this.mapRoute = route;
 	}
 	
 	public int hashCode() {
@@ -61,12 +61,19 @@ public class MapRoute implements Cacheable{
 	public String toString() {
 		String stringRepresentation = "\tFrom - " + getSource().toString() + "\n" +
 				"\tTo - " + getDestination().toString() + "\n";
-		if (getRoute().size() < 0) {
-			stringRepresentation += "\tRoute not discovered yet!";
+		if (getMapRoute().size() < 0) {
+			stringRepresentation += "Route not discovered yet!";
 		}
 		else {
-			stringRepresentation += "\tRoute contains " + getRoute().size() + " nodes";
+			stringRepresentation += "Route contains " + getMapRoute().size() + " nodes";
 		}
 		return stringRepresentation;
+	}
+	public List<GeographicPoint> getGeoPointsRoute(){
+		List<GeographicPoint> geoPointsRoute = new LinkedList<GeographicPoint>();
+		for (MapNode node: getMapRoute()) {
+			geoPointsRoute.add(node.getLocation());
+		}
+		return geoPointsRoute;
 	}
 }
