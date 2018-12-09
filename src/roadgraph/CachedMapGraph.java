@@ -21,7 +21,7 @@ public class CachedMapGraph extends MapGraph {
 	}
 
 	@Override
-	protected List<GeographicPoint> bfs(GeographicPoint start, GeographicPoint goal,
+	public List<GeographicPoint> bfs(GeographicPoint start, GeographicPoint goal,
 			Consumer<GeographicPoint> nodeSearched) {
 		// TODO Auto-generated method stub
 		return null;
@@ -32,7 +32,7 @@ public class CachedMapGraph extends MapGraph {
 	}
 
 	@Override
-	protected List<GeographicPoint> dijkstra(GeographicPoint start, GeographicPoint goal,
+	public List<GeographicPoint> dijkstra(GeographicPoint start, GeographicPoint goal,
 			Consumer<GeographicPoint> nodeSearched) {
 		// Initialize
 		MapNode startNode = mapNodes.get(start);
@@ -43,9 +43,14 @@ public class CachedMapGraph extends MapGraph {
 
 		System.out.println("\nSearching using Dijkstra for " + mapRoute);
 
+		long startTime = System.nanoTime();
+
 		// Find the route
 		route = findPathUsingDijkstra(mapRoute, nodeSearched);
 
+		long endTime = System.nanoTime();
+		System.out.println("Time taken to search- " + (endTime - startTime) / 1000 + "us");
+		System.out.println("Route - " + route);
 		if (route.isEmpty()) {
 			return new LinkedList<GeographicPoint>();
 		}
@@ -269,7 +274,7 @@ public class CachedMapGraph extends MapGraph {
 	}
 
 	@Override
-	protected List<GeographicPoint> aStarSearch(GeographicPoint start, GeographicPoint goal,
+	public List<GeographicPoint> aStarSearch(GeographicPoint start, GeographicPoint goal,
 			Consumer<GeographicPoint> nodeSearched) {
 		// TODO Auto-generated method stub
 		return null;

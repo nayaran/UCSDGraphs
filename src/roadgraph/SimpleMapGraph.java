@@ -171,7 +171,7 @@ public class SimpleMapGraph extends MapGraph {
 	 * @return The list of intersections that form the shortest path from start to
 	 *         goal (including both start and goal).
 	 */
-	protected List<GeographicPoint> dijkstra(GeographicPoint start, GeographicPoint goal,
+	public List<GeographicPoint> dijkstra(GeographicPoint start, GeographicPoint goal,
 			Consumer<GeographicPoint> nodeSearched) {
 		// TODO: Implement this method in WEEK 4
 
@@ -287,7 +287,7 @@ public class SimpleMapGraph extends MapGraph {
 	 * @return The list of intersections that form the shortest path from start to
 	 *         goal (including both start and goal).
 	 */
-	protected List<GeographicPoint> aStarSearch(GeographicPoint start, GeographicPoint goal,
+	public List<GeographicPoint> aStarSearch(GeographicPoint start, GeographicPoint goal,
 			Consumer<GeographicPoint> nodeSearched) {
 		// TODO: Implement this method in WEEK 4
 

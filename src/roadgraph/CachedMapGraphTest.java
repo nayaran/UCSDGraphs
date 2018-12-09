@@ -70,10 +70,9 @@ public class CachedMapGraphTest {
 		long endTime;
 		List<GeographicPoint> testroute;
 
-		startTime = System.nanoTime();
+
 		testroute = map.dijkstra(start, end);
-		endTime = System.nanoTime();
-		System.out.println("\nTime taken - " + (endTime - startTime) / 1000 + "us");
+
 		System.out.println("Path - " + testroute);
 	}
 
@@ -146,17 +145,15 @@ public class CachedMapGraphTest {
 		GeographicPoint testEnd = new GeographicPoint(8.0, -1.0);
 
 		// simpleTestMap.printGraph();
-		long startTime = System.currentTimeMillis();
+
 		System.out.println("-----------------------");
 		System.out.println("First search (cache empty)");
 		System.out.println("-----------------------");
 		System.out.println("Cache details-");
-		testMap.printCachedRoutes();
+		//testMap.printCachedRoutes();
+
 		testDjikstraSearch(testStart, testEnd, testMap);
-		long duration = System.currentTimeMillis() - startTime;
-		System.out.println("\nTime taken - " + duration + "ms");
-		System.out.println();
-		startTime = System.currentTimeMillis();
+
 		// testMap.printCachedRoutes();
 		System.out.println();
 		System.out.println("--------------------------------------");
@@ -164,10 +161,9 @@ public class CachedMapGraphTest {
 		System.out.println("--------------------------------------");
 
 		testDjikstraSearch(testStart, testEnd, testMap);
-		duration = System.currentTimeMillis() - startTime;
-		System.out.println("\nTime taken - " + duration + "ms");
+
 		System.out.println("\nCache details-");
-		// testMap.printCachedRoutes();
+		//testMap.printCachedRoutes();
 	}
 
 	static void testMergeParentMapWithCachedRoute() {
@@ -244,12 +240,12 @@ public class CachedMapGraphTest {
 		// GraphLoader.createIntersectionsFile("data/maps/utc.map",
 		// "data/intersections/utc.intersections");
 
-		//testCachedRouteMembership();
+		testCachedRouteMembership();
 		// testMergeParentMapWithCachedRoute();
 		// testConstructMapRoutesFromRoute();
 		// simpleTest();
 		// utcTest();
 		// utcTestComplexDijkstra();
-		utcTestQuiz();
+		//utcTestQuiz();
 	}
 }
