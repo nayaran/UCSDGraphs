@@ -158,8 +158,10 @@ public class CachedMapGraph extends MapGraph {
 			cache.put(mapRoute, 0);
 			// }
 		}
-		int sizeOfCacheAfter = cache.getSize();
-		System.out.println("Updated cache with - " + (sizeOfCacheAfter - sizeOfCacheBefore) + " routes!");
+		int updatesToCache = cache.getSize() - sizeOfCacheBefore;
+		if (updatesToCache > 0 ) {
+			System.out.println("Updated cache with - " + updatesToCache + " routes!");			
+		}
 	}
 
 	public List<MapRoute> constructMapRoutesFromRoute(List<MapNode> route) {
