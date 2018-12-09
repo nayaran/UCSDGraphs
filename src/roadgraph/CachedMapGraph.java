@@ -13,11 +13,11 @@ import geography.GeographicPoint;
 
 public class CachedMapGraph extends MapGraph {
 
-	private CacheManager cacheManager;
+	private CacheManager cache;
 
 	public CachedMapGraph() {
 		super();
-		cacheManager = new CacheManager();
+		cache = new CacheManager();
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class CachedMapGraph extends MapGraph {
 	}
 
 	public void printCachedRoutes() {
-		System.out.println(cacheManager);
+		System.out.println(cache);
 	}
 
 	@Override
@@ -87,8 +87,8 @@ public class CachedMapGraph extends MapGraph {
 
 			// Check if path from currentNode to Destination is available in the cache
 
-			MapRoute mapRouteFromCache = (MapRoute) cacheManager
-					.getFromCache(new MapRoute(currentNode, endNode).getIdentifier());
+			MapRoute mapRouteFromCache = (MapRoute) cache
+					.get(new MapRoute(currentNode, endNode).getIdentifier());
 			if (mapRouteFromCache != null) {
 				// Since we found the route from currentNode to endNode in cache
 				// We need to update parentMap accordingly
@@ -151,14 +151,14 @@ public class CachedMapGraph extends MapGraph {
 
 	private void updateCacheWithDiscoveredRoute(List<MapNode> route) {
 		// Construct all possible routes from discovered path & update in the cache
-		int sizeOfCacheBefore = cacheManager.getSize();
+		int sizeOfCacheBefore = cache.getSize();
 		List<MapRoute> mapRoutes = constructMapRoutesFromRoute(route);
 		for (MapRoute mapRoute : mapRoutes) {
 			// if (cacheManager.getFromCache(mapRoute.getIdentifier()) != null) {
-			cacheManager.putInCache(mapRoute, 0);
+			cache.put(mapRoute, 0);
 			// }
 		}
-		int sizeOfCacheAfter = cacheManager.getSize();
+		int sizeOfCacheAfter = cache.getSize();
 		System.out.println("Updated cache with - " + (sizeOfCacheAfter - sizeOfCacheBefore) + " routes!");
 	}
 

@@ -7,7 +7,7 @@ public class CacheManager {
 
 	private boolean DETAILED_STR_REPRESENTATION_ON = true;
 
-	public void putInCache(Object objectToCache, int timeToLiveSeconds) {
+	public void put(Object objectToCache, int timeToLiveSeconds) {
 		Cacheable cacheableObject = makeObjectCacheable(objectToCache, timeToLiveSeconds);
 		if (cacheableObject != null) {
 			Object identifier = cacheableObject.getIdentifier();
@@ -25,11 +25,11 @@ public class CacheManager {
 		return cacheableObject;
 	}
 
-	public void removeFromCache(Object identifier) {
+	public void remove(Object identifier) {
 		cache.remove(identifier);
 	}
 
-	public Object getFromCache(Object identifier) {
+	public Object get(Object identifier) {
 		Cacheable cachedObject = cache.get(identifier);
 
 		if (cachedObject == null) {
@@ -39,7 +39,7 @@ public class CacheManager {
 
 		}
 		if (cachedObject.isExpired()) {
-			this.removeFromCache(identifier);
+			this.remove(identifier);
 			System.out.println("Object for id - " + identifier + " is expired! It has been removed from the cache");
 			return null;
 		}
@@ -60,7 +60,7 @@ public class CacheManager {
 				int objectCount = 1;
 				stringRepresentation += "\nList of cached objects - \n";
 				for (Object key : CacheManager.cache.keySet()) {
-					stringRepresentation += objectCount + ". " + this.getFromCache(key).toString() + "\n";
+					stringRepresentation += objectCount + ". " + this.get(key).toString() + "\n";
 					objectCount++;
 				}
 			}
