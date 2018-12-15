@@ -19,7 +19,6 @@ public class MapEdge {
 
 	public MapEdge(GeographicPoint source, GeographicPoint destination, String roadName, String roadType,
 			double length) {
-		super();
 		this.source = source;
 		this.destination = destination;
 		this.roadName = roadName;

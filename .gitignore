@@ -113,7 +113,11 @@
 ./bin/application/services/GeneralService$1.class
 ./bin/geography/RoadSegment.class
 ./bin/geography/GeographicPoint.class
-
+.DS_Store
+.classpath
+.project
+.settings
+bin/
 .DS_Store
 .classpath
 .project
