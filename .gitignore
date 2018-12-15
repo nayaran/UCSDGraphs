@@ -114,3 +114,7 @@
 ./bin/geography/RoadSegment.class
 ./bin/geography/GeographicPoint.class
 
+.DS_Store
+.classpath
+.project
+.settings
